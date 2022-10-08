@@ -87,3 +87,24 @@ const forEach(element =>{
 })
 //Output : 'Yamaha','Honda','Kawasaki'
 ```
+### Javascript - Multidimensional Array
+- Multidimensional Array bisa dianalogikan dengan array of array. Ada array di dalam array.
+- Contoh :
+  ```Javascript
+  let inventory = [
+  ['Celana',5],
+  ['Baju', 10]
+  ]
+  
+  console.log(inventory)
+  ```
+- Akses index multidimensional array
+  - Contoh :
+    ```Javascript
+    let inventory = [
+    ['Celana',5],
+    ['Baju', 10]
+    ]
+  
+    console.log(inventory[1][0]) //Output : Celana
+    ```
