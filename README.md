@@ -75,7 +75,7 @@ let angka = [1,2,3,4]
 let kaliDua = angka.map(num => {
 return num * 2
 })
-//Output : [2,,4,6,8]
+//Output : [2,4,6,8]
 ```
 2. forEach()
 > method untuk melakukan looping pada setiap elemen array.
@@ -89,7 +89,7 @@ const forEach(element =>{
 ```
 ### Javascript - Multidimensional Array
 - Multidimensional Array bisa dianalogikan dengan array of array. Ada array di dalam array.
-- Contoh :
+  <br>Contoh :
   ```Javascript
   let inventory = [
   ['Celana',5],
@@ -99,7 +99,7 @@ const forEach(element =>{
   console.log(inventory)
   ```
 - Akses index multidimensional array
-  - Contoh :
+  <br>Contoh :
     ```Javascript
     let inventory = [
     ['Celana',5],
@@ -108,3 +108,39 @@ const forEach(element =>{
   
     console.log(inventory[1][0]) //Output : Celana
     ```
+- Operation using map in multidimensional array
+  <br>Contoh :
+  ```Javascript
+  let inventory = [
+  ['Celana',5],
+  ['Baju', 10]
+  ]
+  
+  inventory.map(dataInventory => {
+    terjual = 100 - dataInventory[1]
+    dataInventory[2] = terjual
+  })
+  
+  console.table(inventory)
+  ```
+  Result :
+  <br>![image](https://user-images.githubusercontent.com/100120189/194701355-20c2fb76-7a8d-46df-ac96-060f2d3c88fd.png)
+- Looping For Multidimensional Array
+  <br>Contoh :
+  ```Javascript
+  let inventory = [
+  ['Celana',5],
+  ['Baju', 10]
+  ]
+  
+  inventory.forEach(baris) => {
+    baris.forEach(column) => {
+    console.log(column)
+    }
+  }
+  //Output :
+  //Celana
+  //5
+  //Baju
+  //10
+  ```
