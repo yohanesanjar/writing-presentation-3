@@ -400,3 +400,88 @@ const forEach(element =>{
     - Jepang bisa melakukan import dan export.
     - Amerika hanya melakukan export.
   - Hal hal yang harus dilakukan saat membuat modules adalah menambahkan type="module" pada script utama, lalu siapkan script ke-2 dan sebagainya untuk melakukan export, serta lakukan import pada file atau script utama.
+## Asynchronus 
+- Proses yang dilakukan secara tidak berurutan. Jika proses terlalu panjang, akan diselat oleh proses yang lebih singkat 
+- Synchronous : proses yg berurutam (proses keseluruhan) 
+- Blocking : proses yg gabisa diselat
+- Proses concurrent yg tidak sama dengan multitask/multithread
+- Secara umum, bahasa pemrograman berjalan secara synchronous. JS memiliki kelebihan dapat menjalankan sebuah proses tanpa harus berurutan.
+- Tiap engine JS terdiri dari 2 bagian, heap dan stack. Bersifat first in last out.
+### 3 Kunci Utama Ascynchronus
+1. Callback
+  - Callback : function yg dijadikan sebagai argumen
+  - Ketika sesuatu memerlukan waktu yang lama, maka dia akan masuk kedalam callback queue lalu menjalankan proses yang berada di belakangnya. Jika proses yg belakang sudah selesai, maka engine akan memeriksa yang ada didalam callback queue untuk dijalankan.
+  - ![image](https://user-images.githubusercontent.com/100120189/194815911-a682bfe0-45d1-43ed-b0f4-f9f9b7df8d76.png)
+  - Contoh :
+    ```
+    Console.log(“A”)
+    setTimeout( () => {
+    Console.log(“B”) 
+    }, 1000)
+    Console.log(“C”)
+    //Output :
+    //A
+    //C
+    //B
+    ```
+    Yang dikerjakan console.log(“C”) terlebih dahulu karena console.log(“B”) memerlukan waktu sebelum diproses
+2. Promises
+  - Kejadian yang telah selesai atau gagal dalam operasi asynchronous yang menghasilkan nilai
+Saat on progress progress dalam fase pending. Jika gagal maka status asynchronous menjadi rejected. Jika kejadian dari event asynchronous telah berhasil, maka status fulfilled.
+  - Contoh :
+    ```javascript
+    Let nontonPromise = new Promise ((resolve, reject) => {
+    resolve(“nonton terpenuhi”)
+    reject(“gagal”)
+    })
+    Console.log(“A”)
+    nontonPromise
+    .then(result =>{
+      console.log(result)
+    })
+    .catch((err) => {
+      Console.log(err)
+    })
+    
+    Console.log(“C”)
+    ```
+    Output :
+    ![image](https://user-images.githubusercontent.com/100120189/194816454-054773e9-17f2-4064-a862-41d0131cd95a.png)
+  - Jika ingin memberi parameter, harus pake function. Contoh :
+    ```javascript
+    Let nonton = () => {
+      Return new Promise((resolve, reject) => {
+        If (kondisi == “jalan”) {
+          Resolve (“nonton terpenuhi”)
+        }
+      
+        Reject (“batal nonton”)
+      })
+    }
+      
+    Nonton(“jalan”)
+    .then(result => {
+       Console.log(result)
+    })
+    .catch(err => {
+       Console.log(err)
+    })
+    ```
+3. Async - Await
+- Async - await adalah salah satu fitur baru dari javascript yang digunakan untuk menangani hasil dari sebuah Promise.
+- Await berfungsi untuk menunda sebuah kode dijalankan sampai proses asynchronous berhasil.
+- Contoh :
+  ```
+  async function hello(){
+    let result = await 'Hello'
+    return result
+  }
+  //es6
+  const hello1 = async() => {
+    let result = await 'Helloooo'
+    return result
+  }
+  ```
+
+
+4. Async Await
